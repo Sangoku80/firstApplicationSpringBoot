@@ -1,12 +1,14 @@
 package com.firstApp.sa.controller;
 
+import com.firstApp.sa.dto.ErrorEntity;
 import com.firstApp.sa.entities.Client;
 import com.firstApp.sa.service.ClientService;
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController

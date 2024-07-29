@@ -2,6 +2,7 @@ package com.firstApp.sa.service;
 
 import com.firstApp.sa.entities.Client;
 import com.firstApp.sa.repository.ClientRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +35,9 @@ public class ClientService {
     public Client lire(int id) {
         Optional<Client> optionalClient = this.clientRepository.findById(id);
 
-        return optionalClient.orElse(null);
+        return optionalClient.orElseThrow(
+                () -> new EntityNotFoundException("Aucun client n'existe avec cet id")
+        );
     }
 
     public Client lireOuCreer(Client clientAcreer)
